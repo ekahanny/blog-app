@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-auto" max-width="400" hover>
-    <v-img class="align-end text-white" height="200" :src="posts.thumb" cover>
+    <v-img class="align-end text-white" :src="posts.thumb" cover>
       <v-card-title>{{ posts.title }}</v-card-title>
     </v-img>
     <v-card-subtitle class="pt-4">{{ posts.time }}</v-card-subtitle>
@@ -14,7 +14,7 @@
     </v-card-text>
     <router-link :to="`/detail/${posts.key}`">
       <v-card-actions>
-        <v-btn color="orange" text="Show Details" :href="posts.link"></v-btn>
+        <v-btn color="orange" text="Show Details"></v-btn>
       </v-card-actions>
     </router-link>
   </v-card>

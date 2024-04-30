@@ -55,12 +55,12 @@ export default {
         if (typeof item === 'string') {
           if (item.startsWith('http')) {
             if (item.endsWith('.png') || item.endsWith('.jpg') || item.endsWith('.jpeg')) {
-              renderedContent += `<img src="${item}" alt="Image" class="mx-auto my-4 w-1/3">`
+              renderedContent += `<img src="${item}" alt="Image" class="mx-auto my-4 w-1/2 md:w-1/3 lg:w-1/3">`
             } else if (item.includes('youtube.com') || item.includes('youtu.be')) {
               const videoId = this.getYouTubeVideoId(item)
               if (videoId) {
                 renderedContent += `<div class="flex items-center justify-center embed-responsive ">
-                                      <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen class="embed-responsive-item w-1/3 aspect-video"></iframe>
+                                      <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen class="embed-responsive-item w-1/2 md:w-1/3 lg:w-1/3 aspect-video"></iframe>
                                     </div>`
               }
             }
