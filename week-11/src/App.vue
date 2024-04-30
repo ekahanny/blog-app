@@ -1,13 +1,9 @@
 <template>
-  <HomeView />
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <script>
-import HomeView from './views/HomeView.vue'
-
-export default {
-  components: {
-    HomeView
-  }
-}
+export default {}
 </script>

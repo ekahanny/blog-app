@@ -16,6 +16,7 @@
     "flowbite": "^2.3.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
+    "vue3-markdown-it": "^1.0.10",
     "vuetify": "^3.5.17"
   },
   "devDependencies": {

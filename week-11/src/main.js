@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import './utils/api'
 import './assets/style.css'
+import Markdown from 'vue3-markdown-it'
 
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -19,4 +21,5 @@ const vuetify = createVuetify({
 const app = createApp(App)
 app.use(router)
 app.use(vuetify)
+app.use(Markdown)
 app.mount('#app')
