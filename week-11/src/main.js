@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import './utils/api'
 import './assets/style.css'
 import Markdown from 'vue3-markdown-it'
 

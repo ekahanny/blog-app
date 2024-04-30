@@ -6,14 +6,11 @@
     <div v-if="isLoading" class="flex justify-center items-center h-screen">
       <v-progress-circular color="primary" indeterminate></v-progress-circular>
     </div>
-    <NoData v-else-if="!isLoading && posts.length === undefined" />
+    <NoData v-else-if="!isLoading && posts.length === 0" />
     <div v-else>
       <div class="md:flex md:flex-wrap md:justify-between">
         <Card v-for="(post, index) in posts" :key="index" :posts="post" class="w-1/2 mb-4" />
       </div>
-    </div>
-    <div class="flex justify-center my-5">
-      <v-pagination :length="totalPages" v-model="currentPage" @input="updateUrl"></v-pagination>
     </div>
   </div>
 </template>
@@ -21,7 +18,7 @@
 <script>
 import Card from '../components/CardComponent.vue'
 import NoData from '../components/NoData.vue'
-import axiosInstance from '@/utils/api'
+import { postsData } from '@/utils/posts.js'
 
 export default {
   components: {
@@ -31,43 +28,23 @@ export default {
   data() {
     return {
       posts: [],
-      isLoading: false,
-      currentPage: 1,
-      totalPages: 34
+      isLoading: false
     }
   },
   async mounted() {
-    await this.fetchDataFromUrl()
-  },
-  watch: {
-    $route: 'fetchDataFromUrl',
-    currentPage: {
-      handler: 'fetchData',
-      immediate: false
-    }
+    await this.fetchData()
   },
   methods: {
     async fetchData() {
       try {
         this.isLoading = true
-        const response = await axiosInstance.get(`api/tech/news?page=${this.currentPage}`)
-        this.posts = response.data
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+        this.posts = await Promise.resolve(postsData)
         this.isLoading = false
-        this.updateUrl()
       } catch (error) {
         console.error('Error fetching data:', error)
         this.isLoading = false
       }
-    },
-    async fetchDataFromUrl() {
-      const page = parseInt(this.$route.query.page) || 1
-      this.currentPage = page
-      await this.fetchData()
-    },
-    updateUrl() {
-      const url = new URL(window.location.href)
-      url.searchParams.set('page', this.currentPage)
-      window.history.pushState({ path: url.href }, '', url.href)
     }
   }
 }
