@@ -1,0 +1,3 @@
+[submodule "api-berita-indonesia"]
+	path = api-berita-indonesia
+	url = https://github.com/renomureza/api-berita-indonesia
